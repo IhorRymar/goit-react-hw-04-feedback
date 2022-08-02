@@ -6,16 +6,10 @@ import Notification from './Feedback/Notification';
 import css from '../components/Feedback/Feedback.module.css';
 
 class App extends Component {
-  static defaultProps = {
-    defaultGood: 0,
-    defaultNeutral: 0,
-    defaultBad: 0,
-  };
-
   state = {
-    good: this.props.defaultGood,
-    neutral: this.props.defaultNeutral,
-    bad: this.props.defaultBad,
+    good: 0,
+    neutral: 0,
+    bad: 0,
   };
 
   handleClick = button => {
@@ -37,7 +31,7 @@ class App extends Component {
       <div className={css.title}>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={['good', 'neutral', 'bad']}
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.handleClick}
           />
         </Section>
